@@ -1,18 +1,9 @@
 import torch
-
-import random
-
-from position_encoding.relative import get_relative_position_encoding_matrix
+from position_encoding import get_relative_position_encoding_matrix
 
 
 def test_positional_encoding():
-
-    batch_size = 10
     maxlen = 16
-
-    l=12
-
-    masks = torch.tensor([[i < l for i in range(maxlen)] for _ in range(batch_size)])
 
     code = get_relative_position_encoding_matrix(maxlen, 32)
 
