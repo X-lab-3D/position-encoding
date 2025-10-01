@@ -1,9 +1,7 @@
 import torch
 
 
-def get_relative_position_encoding_matrix(
-    max_length: int, encoding_depth: int = 0
-) -> torch.Tensor:
+def get_relative_position_encoding_matrix(max_length: int, encoding_depth: int = 0) -> torch.Tensor:
     """Get a one-hot encoded relative position matrix (not masked).
 
     It distinguishes between left side (.., -2, -1, 0) and right side (0, 1, 2, ..) relative positions.
@@ -12,10 +10,10 @@ def get_relative_position_encoding_matrix(
         max_length: max length of the encoded sequence
         encoding_depth: dimensionality for relative position one hot encoding,
                         by default it makes the encoding as large as necessary to fit all relative positions.
+
     Returns:
         one hot encoded relative positions: [max_length, max_length, encoding_depth]
     """
-
     if encoding_depth == 0:
         encoding_depth = 2 * max_length - 1
 
